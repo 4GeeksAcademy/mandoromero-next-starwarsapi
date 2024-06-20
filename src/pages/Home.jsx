@@ -7,48 +7,41 @@ function Home() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Function to fetch data from the API and save it to state and local storage
         async function fetchData() {
-            const peopleData = await fetchAndStoreData('https://swapi.dev/api/people/?format=json', 'people');
+            const peopleData = await fetchAndStoreData('https://swapi.tech/api/people/?format=json', 'people');
             setPeople(peopleData);
 
-            const planetsData = await fetchAndStoreData('https://swapi.dev/api/planets/?format=json', 'planets');
+            const planetsData = await fetchAndStoreData('https://swapi.tech/api/planets/?format=json', 'planets');
             setPlanets(planetsData);
 
-            const vehiclesData = await fetchAndStoreData('https://swapi.dev/api/vehicles/?format=json', 'vehicles');
+            const vehiclesData = await fetchAndStoreData('https://swapi.tech/api/vehicles/?format=json', 'vehicles');
             setVehicles(vehiclesData);
 
             setLoading(false);
         }
 
-        // Read data from local storage or fetch if not available
-        function readOrFetchData(key, fetchFunction) {
+        function readOrFetchData(key) {
             const storedData = localStorage.getItem(key);
             if (storedData) {
                 return JSON.parse(storedData);
-            } else {
-                fetchFunction();
             }
+            return null;
         }
 
-        // Read data from local storage first
-        const storedPeople = readOrFetchData('people', fetchData);
-        const storedPlanets = readOrFetchData('planets', fetchData);
-        const storedVehicles = readOrFetchData('vehicles', fetchData);
+        const storedPeople = readOrFetchData('people');
+        const storedPlanets = readOrFetchData('planets');
+        const storedVehicles = readOrFetchData('vehicles');
 
-        if (storedPeople) setPeople(storedPeople);
-        if (storedPlanets) setPlanets(storedPlanets);
-        if (storedVehicles) setVehicles(storedVehicles);
-
-        // Fetch data if not available in local storage
-        if (!storedPeople || !storedPlanets || !storedVehicles) {
-            fetchData();
-        } else {
+        if (storedPeople && storedPlanets && storedVehicles) {
+            setPeople(storedPeople);
+            setPlanets(storedPlanets);
+            setVehicles(storedVehicles);
             setLoading(false);
+        } else {
+            fetchData();
         }
     }, []);
 
-    // Function to fetch data and save it to local storage
     async function fetchAndStoreData(url, key) {
         let res = await fetch(url);
         let data = await res.json();
@@ -66,11 +59,27 @@ function Home() {
 
     return (
         <div className="container">
-            <p>Hello World</p>
-            {/* Render your data here */}
+            <h1>Star Wars Data</h1>
+            <h2>People</h2>
+            <ul>
+                {people.map((person, index) => (
+                    <li key={index}>{person.name}</li>
+                ))}
+            </ul>
+            <h2>Planets</h2>
+            <ul>
+                {planets.map((planet, index) => (
+                    <li key={index}>{planet.name}</li>
+                ))}
+            </ul>
+            <h2>Vehicles</h2>
+            <ul>
+                {vehicles.map((vehicle, index) => (
+                    <li key={index}>{vehicle.name}</li>
+                ))}
+            </ul>
         </div>
     );
 }
 
 export default Home;
-
