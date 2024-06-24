@@ -1,17 +1,17 @@
 export const initialStore=()=>{
   return{
     message: null,
-    todos: [
+    cards: [
       {
-        id: 1,
-        title: "Make the bed",
+      //   id: 1,
+      //   title: "Make the bed",
 
-        background: null,
-      },
-      {
-        id: 2,
-        title: "Do my homework",
-        background: null,
+      //   background: null,
+      // },
+      // {
+        // id: 2,
+        // title: "Do my homework",
+        // background: null,
       }
     ],
     people: [],
@@ -23,14 +23,14 @@ export const initialStore=()=>{
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
-    case 'add_task':
+    // case 'add_task':
 
-      const { id,  color } = action.payload
+    //   const { id,  color } = action.payload
 
-      return {
-        ...store,
-        todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
-      };
+    //   return {
+    //     ...store,
+    //     todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
+    //   };
 
       case 'SET_PEOPLE':
         return {
@@ -44,7 +44,7 @@ export default function storeReducer(store, action = {}) {
           vehicles: action.payload
         };
       case 'SET_PLANETS':
-        retun {
+        return {
           ...store,
           planets: action.payload
         };
@@ -61,4 +61,10 @@ export default function storeReducer(store, action = {}) {
     default:
       throw Error('Unknown action.');
   }    
+}
+async function fetchAndStoreData(url, key) {
+  let res = await fetch(url);
+  let data = await res.json();
+  localStorage.setItem(key, JSON.stringify(data.results));
+  return data.results;
 }
