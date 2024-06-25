@@ -9,6 +9,7 @@ import Favorites from '../components/Favorites';
 import { fetchPeople, fetchVehicles, fetchPlanets } from '../actions';
 import useGlobalReducer from '../hooks/useGlobalReducer';
 
+
 export const Layout = () => {
     const { dispatch } = useGlobalReducer();
 
