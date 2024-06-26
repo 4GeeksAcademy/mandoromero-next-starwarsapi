@@ -1,6 +1,6 @@
 import React from 'react';
 import EntityList from './EntityList';
-import useGlobalReducer from '../hooks/useGlobalReducer';
+import { useGlobalReducer } from '/src/hooks/useGlobalReducer.jsx';
 import { removeFromFavorites } from '../actions';
 
 const Favorites = () => {

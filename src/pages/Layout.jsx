@@ -7,7 +7,7 @@ import Home from './Home';
 import Detail from "../components/Details";
 import Favorites from '../components/Favorites';
 import { fetchPeople, fetchVehicles, fetchPlanets } from '../actions';
-import useGlobalReducer from '../hooks/useGlobalReducer';
+import { useGlobalReducer } from '/src/hooks/useGlobalReducer.jsx';
 
 
 export const Layout = () => {
