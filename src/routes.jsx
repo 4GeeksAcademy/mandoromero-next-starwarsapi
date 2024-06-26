@@ -10,7 +10,7 @@ import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 import Home from "./pages/Home";
 import EntityList from "./components/EntityList";
-import VehiclesList from "./components/VehiclesList";
+
 
 
 export const router = createBrowserRouter(
@@ -30,7 +30,7 @@ export const router = createBrowserRouter(
         <Route path="/demo" element={<Demo />} />
         <Route path="/HOme" element={<Home />} />
         <Route path="/EntityList" element={<EntityList />} />
-        <Route path="/VehiclesList" element={<VehiclesList />} />
+        
         
       </Route>
     )

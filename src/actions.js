@@ -1,5 +1,3 @@
-
-
 export const fetchPeople = async (dispatch) => {
     const response = await fetch ('https://www.swapi.tech/api/people');
     const data = await response.json();
@@ -10,6 +8,7 @@ export const fetchVehicles = async (dispatch) => {
     const response = await fetch ('https://www.swapi.tech/api/vehicles');
     const data = await response.json();
     dispatch ({type: 'SET_VEHICLES', payload: data.results});
+
 };
 
 export const fetchPlanets = async (dispatch) => {
@@ -32,3 +31,5 @@ async function fetchAndStoreData(url, key) {
     localStorage.setItem(key, JSON.stringify(data.results));
     return data.results;
   }
+
+

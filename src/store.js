@@ -15,7 +15,7 @@ export const initialStore=()=>{
       }
     ],
     people: [],
-    vehicles: [],
+    vehicle: [],
     planets: [],
     favorites: [],
   };

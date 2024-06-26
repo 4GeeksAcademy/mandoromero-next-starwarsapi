@@ -1,24 +1,38 @@
-// Import necessary hooks and functions from React.
-import { useContext, useReducer, createContext } from "react";
-import storeReducer, { initialStore } from "../store"  // Import the reducer and the initial state.
+import { useReducer, useContext, createContext } from 'react';
 
-// Create a context to hold the global state of the application
-// We will call this global state the "store" to avoid confusion while using local states
-const StoreContext = createContext()
+const GlobalStateContext = createContext();
+const GlobalDispatchContext = createContext();
 
-// Define a provider component that encapsulates the store and warps it in a context provider to 
-// broadcast the information throught all the app pages and components.
-export function StoreProvider({ children }) {
-    // Initialize reducer with the initial state.
-    const [store, dispatch] = useReducer(storeReducer, initialStore())
-    // Provide the store and dispatch method to all child components.
-    return <StoreContext.Provider value={{ store, dispatch }}>
+const initialState = {
+  favorites: []
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_TO_FAVORITES':
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload]
+      };
+    default:
+      return state;
+  }
+};
+
+export const StoreProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <GlobalStateContext.Provider value={state}>
+      <GlobalDispatchContext.Provider value={dispatch}>
         {children}
-    </StoreContext.Provider>
-}
+      </GlobalDispatchContext.Provider>
+    </GlobalStateContext.Provider>
+  );
+};
 
-// Custom hook to access the global state and dispatch function.
-export default function useGlobalReducer() {
-    const { dispatch, store } = useContext(StoreContext)
-    return { dispatch, store };
-}
+export const useGlobalState = () => useContext(GlobalStateContext);
+export const useGlobalReducer = () => {
+  const dispatch = useContext(GlobalDispatchContext);
+  return { dispatch };
+};

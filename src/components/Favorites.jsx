@@ -2,7 +2,6 @@ import React from 'react';
 import EntityList from './EntityList';
 import useGlobalReducer from '../hooks/useGlobalReducer';
 import { removeFromFavorites } from '../actions';
-import VehiclesList from './VehiclesList';
 
 const Favorites = () => {
     const {store, dispatch} = useGlobalReducer();
@@ -21,3 +20,4 @@ const Favorites = () => {
 
 
 export default Favorites;
+
