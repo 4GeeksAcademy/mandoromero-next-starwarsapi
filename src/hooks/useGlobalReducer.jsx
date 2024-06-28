@@ -1,91 +1,17 @@
 import { useReducer, useContext, createContext } from 'react';
+import storeReducer, { initialStore } from "../store"
+const StoreContext = createContext()
 
+export function StoreProvider({ children }) {
+  // Initialize reducer with the initial state.
+  const [store, dispatch] = useReducer(storeReducer, initialStore())
+  // Provide the store and dispatch method to all child components.
+  return <StoreContext.Provider value={{ store, dispatch }}>
+      {children}
+  </StoreContext.Provider>
+}
 
-
-
-const GlobalStateContext = createContext();
-const GlobalDispatchContext = createContext();
-
-const initialState = {
-  favorites: [],
-  characters: [], 
-  vehicles: [],
-  planets: []
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'ADD_TO_FAVORITES':
-      return {
-        ...state,
-        favorites: [...state.favorites, action.payload]
-      };
-    default:
-      return state;
-  }
-};
-
-export const StoreProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  return (
-    <GlobalStateContext.Provider value={state}>
-      <GlobalDispatchContext.Provider value={dispatch}>
-        {children}
-      </GlobalDispatchContext.Provider>
-    </GlobalStateContext.Provider>
-  );
-};
-
-export const useGlobalState = () => useContext(GlobalStateContext);
-export const useGlobalReducer = () => {
-  const state = useContext(GlobalStateContext);
-  const dispatch = useContext(GlobalDispatchContext);
-  return { state, dispatch };
-};
-
-
-// import { useReducer, useContext, createContext } from 'react';
-
-// const GlobalStateContext = createContext();
-// const GlobalDispatchContext = createContext();
-
-// const initialState = {
-//   favorites: [],
-//   people: [], 
-//   vehicles: [],
-//   planets: []
-// };
-
-// const reducer = (state, action) => {
-//   switch (action.type) {
-//     case 'ADD_TO_FAVORITES':
-//       return {
-//         ...state,
-//         favorites: [...state.favorites, action.payload]
-//       };
-//     // Add other cases as necessary
-//     default:
-//       return state;
-//   }
-// };
-
-// export const StoreProvider = ({ children }) => {
-//   const [state, dispatch] = useReducer(reducer, initialState);
-
-//   return (
-//     <GlobalStateContext.Provider value={state}>
-//       <GlobalDispatchContext.Provider value={dispatch}>
-//         {children}
-//       </GlobalDispatchContext.Provider>
-//     </GlobalStateContext.Provider>
-//   );
-// };
-
-// export const useGlobalState = () => useContext(GlobalStateContext);
-// export const useGlobalReducer = () => {
-//   const state = useContext(GlobalStateContext);
-//   const dispatch = useContext(GlobalDispatchContext);
-//   return { state, dispatch };
-// };
-
+export default function useGlobalReducer() {
+  const { dispatch, store } = useContext(StoreContext)
+  return { dispatch, store };
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import EntityList from './EntityList';
-import { useGlobalReducer } from '/src/hooks/useGlobalReducer.jsx';
+import useGlobalReducer from '/src/hooks/useGlobalReducer.jsx';
 import { removeFromFavorites } from '../actions';
 
 const Favorites = () => {
@@ -11,7 +11,6 @@ const Favorites = () => {
         <div className="container">
             <h1>Favorites</h1>
             <EntityList entities={favorites} addToFavorites={(entity) => removeFromFavorites(dispatch, entity)}  /> 
-            <VehiclesList vehicles={favorites} addToFavorites={(vehicle) => removeFromFavorites(disoatch, vehicle)} />
         </div>
 
     );

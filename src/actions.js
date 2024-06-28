@@ -1,5 +1,5 @@
 export const fetchPeople = async (dispatch) => {
-    const response = await fetch ('');
+    const response = await fetch ('https://www.swapi.tech/api/people/');
     const data = await response.json();
     dispatch({type: 'SET_PEOPLE', payload: data.results});
 };
@@ -32,4 +32,4 @@ async function fetchAndStoreData(url, key) {
     return data.results;
   }
 
-//   https://www.swapi.tech/api/people
+ 

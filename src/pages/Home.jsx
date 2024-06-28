@@ -1,6 +1,6 @@
 import React from 'react';
 import EntityList from '../components/EntityList';
-import { useGlobalReducer } from '../hooks/useGlobalReducer';
+import useGlobalReducer from '../hooks/useGlobalReducer';
 
 const Home = () => {
   const { store } = useGlobalReducer();

@@ -32,7 +32,7 @@ export default function storeReducer(store, action = {}) {
     //     todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
     //   };
 
-      case 'SET_CHARACTERS':
+      case 'SET_PEOPLE':
         return {
           ...store,
           characters: action.payload
