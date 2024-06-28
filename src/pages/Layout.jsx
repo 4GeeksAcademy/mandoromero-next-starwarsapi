@@ -10,6 +10,7 @@ import { fetchPeople, fetchVehicles, fetchPlanets } from '../actions';
 import { useGlobalReducer } from '/src/hooks/useGlobalReducer.jsx';
 
 
+
 export const Layout = () => {
     const { dispatch } = useGlobalReducer();
 

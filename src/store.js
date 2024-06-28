@@ -14,8 +14,8 @@ export const initialStore=()=>{
         // background: null,
       }
     ],
-    people: [],
-    vehicle: [],
+    characters: [],
+    vehicles: [],
     planets: [],
     favorites: [],
   };
@@ -32,10 +32,10 @@ export default function storeReducer(store, action = {}) {
     //     todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
     //   };
 
-      case 'SET_PEOPLE':
+      case 'SET_CHARACTERS':
         return {
           ...store,
-          people: action.payload
+          characters: action.payload
         };
 
       case 'SET_VEHICLES':
