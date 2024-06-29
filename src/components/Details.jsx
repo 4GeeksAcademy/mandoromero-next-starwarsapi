@@ -3,17 +3,25 @@ import { useParams } from 'react-router-dom';
 
 const Detail = () => {
     const {id} = useParams();
+    const {entity} = useParams();
     const [detail, setDetail] = useState({});
+    let entityType = "";
 
     useEffect(() => {
+        if(entity == 'characters') {
+            entityType = 'people'
+        }
+        else {
+            entityType = entity
+        }
         const fetchDetail = async () => {
-            const res = await fetch(`https://www.swapi.tech/api/people/${id}`);
+            const res = await fetch(`https://www.swapi.tech/api/${entityType}/${id}`);
             const data = await res.json();
-            setDetail(data.res.properties);
+            setDetail(data.result.properties);
         };
         fetchDetail();
 
-    }, [id])
+    }, [])
 
 return (
     <div>
@@ -24,4 +32,6 @@ return (
     </div>
 );
 };
+
+
 export default Detail;

@@ -26,7 +26,7 @@ export const Layout = () => {
             <div className="container">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/details/:id" element={<Detail />} />
+                    <Route path="/details/:entity/:id" element={<Detail />} />
                     <Route path="/favorites" element={<Favorites />} />
                 </Routes>
             </div>
