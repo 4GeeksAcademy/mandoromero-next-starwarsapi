@@ -27,8 +27,20 @@ return (
     <div>
         <h1>{detail.name}</h1>
         <p>Gender: {detail.gender}</p>
+        <p>Birth Yeear: {detail.birth_year}</p>
         <p>Hair Color: {detail.hair_color}</p>
         <p>Eye Color: {detail.eye_color}</p>
+        <p>Species: {detail.species}</p>
+        <p>Mass: {detail.mass}</p>
+        <p>Model: {detail.model}</p>
+        <p>Manufacturer: {detail.manufacurer}</p>
+        <p>Class: {detail.class}</p>
+        <p>Cost: {detail.cost}</p>
+        <p>Speed: {detail.speed}</p>
+        <p>Length: {detail.length}</p>
+        <p>Cargo Capacity: {}detail.cargo_capacity</p>
+        <p>Mimimum Crew: {detail.minimum_crew}</p>
+        <p>Passengers: {detail.passengers}</p>
     </div>
 );
 };
