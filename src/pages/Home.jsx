@@ -7,11 +7,11 @@ const Home = () => {
 
   return (
     <div className="container">
-      <h1>Characters</h1>
+      <h1 style={{ fontWeight: "bold", fontSize: "60px" }}>CHARACTERS</h1>
       <EntityList entities={store.characters} entityType={"characters"}/>
-      <h1>Vehicles</h1>
+      <h1 style={{ fontWeight: "bold" }}>VEHICLES</h1>
       <EntityList entities={store.vehicles} entityType={"vehicles"}/>
-      <h1>Planets</h1>
+      <h1 style={{ fontWeight: "bold" }}>PLANETS</h1>
       <EntityList entities={store.planets} entityType={"planets"}/>
     </div>
   );
