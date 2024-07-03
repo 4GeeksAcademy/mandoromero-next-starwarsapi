@@ -64,9 +64,9 @@ const Detail = () => {
                         <p>Rotation Period: {detail.properties.rotation_period}</p>      
                         <p>Orbital Period:  {detail.properties.orbital_period}</p>
                         <p>Gravity: {detail.properties.gravity}</p>
-                        <p>Population: {detail.properies.population}</p>
+                        {/* <p>Population: {detail.properies.population}</p> */}
                         <p>Climate: {detail.properties.climate}</p>
-                        <p>Terrain: {detail.properies.terrain}</p>
+                        {/* <p>Terrain: {detail.properies.terrain}</p> */}
                     </div>
             )}
         </div>

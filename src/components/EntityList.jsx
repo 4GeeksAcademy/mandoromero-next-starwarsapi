@@ -54,33 +54,3 @@ const EntityList = ({ entities, entityType }) => {
 };
 
 export default EntityList;
-
-// import React from 'react';
-// import EntityCard from './EntityCard';
-// import useGlobalReducer from '/src/hooks/useGlobalReducer.jsx';
-// import { addToFavorites } from '../actions';
-
-// const EntityList = ({ entities, entityType }) => {
-//   const { dispatch } = useGlobalReducer();
-
-//   const determineEntityType = (entity, defaultType) => {
-//     if (defaultType) return defaultType;
-//     if (entity.url.includes('people')) return 'characters';
-//     if (entity.url.includes('planets')) return 'planets';
-//     if (entity.url.includes('vehicles')) return 'vehicles';
-//     return 'unknown';
-//   };
-
-//   return (
-//     <div className="card-deck d-flex col-10 overflow-auto mb-5 mx-auto">
-//       {entities.map(entity => (
-//         <EntityCard
-//           key={entity.uid}
-//           entityType={determineEntityType(entity, entityType)}
-//           entity={entity}
-//           addToFavorites={(entity) => addToFavorites(dispatch, entity)}
-//         />
-//       ))}
-//     </div>
-//   );
-// };
