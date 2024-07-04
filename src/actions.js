@@ -25,11 +25,6 @@ export const removeFromFavorites = (dispatch, entity) => {
     dispatch({type: 'REMOVE_FROM_FAVORITES', payload: entity});
 };
 
-async function fetchAndStoreData(url, key) {
-    let res = await fetch(url);
-    let data = await res.json();
-    localStorage.setItem(key, JSON.stringify(data.results));
-    return data.results;
-  }
+
 
  

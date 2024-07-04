@@ -1,51 +1,50 @@
-export const initialStore=()=>{
-  return{
-    message: null,
+export const initialStore = () => {
+  const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  return {
     cards: [],
     characters: [],
     vehicles: [],
     planets: [],
-    favorites: [],
+    favorites: storedFavorites,
   };
-}
+};
 
-export default function storeReducer(store, action = {}) {
-  switch(action.type){
-
-
-      case 'SET_PEOPLE':
-        return {
-          ...store,
-          characters: action.payload
-        };
-
-      case 'SET_VEHICLES':
-        return {
-          ...store,
-          vehicles: action.payload
-        };
-      case 'SET_PLANETS':
-        return {
-          ...store,
-          planets: action.payload
-        };
-      case 'ADD_TO_FAVORITES':
-        return {
-          ...store,
-          favorites: [...store.favorites, action.payload]
-        };
-      case 'REMOVE_FROM_FAVORITES':
-        return {
-          ...store,
-          favorites: store.favorites.filter(item => item.uid !== action.payload.uid)
-        }
+const storeReducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_PEOPLE':
+      return {
+        ...state,
+        characters: action.payload,
+      };
+    case 'SET_VEHICLES':
+      return {
+        ...state,
+        vehicles: action.payload,
+      };
+    case 'SET_PLANETS':
+      return {
+        ...state,
+        planets: action.payload,
+      };
+    case 'ADD_TO_FAVORITES': {
+      const updatedFavorites = [...state.favorites, action.payload];
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      return {
+        ...state,
+        favorites: updatedFavorites,
+      };
+    }
+    case 'REMOVE_FROM_FAVORITES': {
+      const updatedFavorites = state.favorites.filter(item => item.uid !== action.payload.uid);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      return {
+        ...state,
+        favorites: updatedFavorites,
+      };
+    }
     default:
-      throw Error('Unknown action.');
-  }    
-}
-async function fetchAndStoreData(url, key) {
-  let res = await fetch(url);
-  let data = await res.json();
-  localStorage.setItem(key, JSON.stringify(data.results));
-  return data.results;
-}
+      return state;
+  }
+};
+
+export default storeReducer;

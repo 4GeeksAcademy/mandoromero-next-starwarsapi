@@ -10,6 +10,7 @@ import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 import Home from "./pages/Home";
 import EntityList from "./components/EntityList";
+import Favorites from "./components/Favorites";
 
 
 
@@ -31,6 +32,7 @@ export const router = createBrowserRouter(
         <Route path="/demo" element={<Demo />} />
         <Route path="/HOme" element={<Home />} />
         <Route path="/EntityList" element={<EntityList />} />
+        <route path="/Favorites" element={<Favorites />} />
         
         
       </Route>

@@ -6,12 +6,12 @@ const Home = () => {
   const { store } = useGlobalReducer();
 
   return (
-    <div className="container">
-      <h1 style={{ fontWeight: "bold", fontSize: "60px" }}>CHARACTERS</h1>
+    <div className="container" style={{ fontFamily:  "Star Wars, sans-serif",}}>
+      <h1 style={{ fontSize: "55px" }}>CHARACTERS</h1>
       <EntityList entities={store.characters} entityType={"characters"}/>
-      <h1 style={{ fontWeight: "bold" }}>VEHICLES</h1>
+      <h1 style={{ fontSize: "55px" }}>VEHICLES</h1>
       <EntityList entities={store.vehicles} entityType={"vehicles"}/>
-      <h1 style={{ fontWeight: "bold" }}>PLANETS</h1>
+      <h1 style={{ fontSize: "55px" }}>PLANETS</h1>
       <EntityList entities={store.planets} entityType={"planets"}/>
     </div>
   );
