@@ -34,8 +34,8 @@ const EntityList = ({ entities, entityType }) => {
 
         return (
           <div key={entity.uid}>
-            <div className="card mx-2" style={{ fontFamily:  "Star Wars, sans-serif", width: "300px", height: "410px", marginBottom: "10px", display: "flex", border: "3px black solid", color: "#ffe81f", backgroundColor: "#000000" }}>
-              <img className="card-img-top" src={`https://starwars-visualguide.com/assets/img/${derivedEntityType}/${entity.uid}.jpg`} alt={entity.name} width="100" height="225" />
+            <div className="card mx-2" style={{ fontFamily:  "death star, san-serif", width: "225px", height: "310px", marginBottom: "10px", display: "flex", border: "3px black solid", color: "#ffe81f", backgroundColor: "#000000" }}>
+              <img className="card-img-top" src={`https://starwars-visualguide.com/assets/img/${derivedEntityType}/${entity.uid}.jpg`} alt={entity.name} width="100" height="170" />
               <div className="card-body" style={{ height: "5px", paddingBottom: "0", marginBottom: "0" }}>
                 <div style={{ display: "flex", marginBottom: "0" }}>
                   <div style={{ width: "85%" }}>

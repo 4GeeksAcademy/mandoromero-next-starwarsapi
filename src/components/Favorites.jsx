@@ -23,8 +23,8 @@ const Favorites = () => {
   };
 
   return (
-    <div className="container">
-      <h1 styles={{ fontFamily:  "Star Wars, sans-serif" }}>Favorites</h1> 
+    <div className="container" styles={{ fontFamily:  "death star, san-serif" }}>
+      <h1>Favorites</h1> 
       <div className="card-deck d-flex col-10 overflow-auto mb-5 mx-auto">
         {favorites.map(entity => {
           const entityType = getEntityType(entity);
@@ -35,7 +35,7 @@ const Favorites = () => {
                 <div className="card-body" style={{ height: "5px", paddingBottom: "0", marginBottom: "0" }}>
                   <div style={{ display: "flex", marginBottom: "0" }}>
                     <div style={{ width: "85%" }}>
-                      <h3 className="card-title" style={{ marginBottom: "0", fontFamily:  "Star Wars, sans-serif" }}>{entity.name}</h3>
+                      <h3 className="card-title" style={{ marginBottom: "0"}}>{entity.name}</h3>
                     </div>
                     <button style={{ border: "none", marginLeft: "5px", marginRight: "0", backgroundColor: "#000000" }} onClick={() => handleRemoveFavorite(entity)}>
                       💔

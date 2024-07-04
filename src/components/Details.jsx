@@ -21,7 +21,9 @@ const Detail = () => {
     }, [])
     
     if (loading) {
-        return <div>Loading...</div>;
+        return <div>
+                <i class="fa-solid fa-jedi"></i>
+               </div>;
     }
 
     return (
