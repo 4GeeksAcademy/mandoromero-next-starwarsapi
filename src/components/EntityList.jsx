@@ -8,7 +8,7 @@ const EntityList = ({ entities, entityType }) => {
   const { favorites } = store;
 
   return (
-    <div className="card-deck d-flex col-10 overflow-auto mb-5 mx-auto">
+    <div className="card-deck d-flex col-11 overflow-auto mb-5 mx-auto">
       {entities.map(entity => {
         let derivedEntityType = entityType;
 
@@ -34,7 +34,7 @@ const EntityList = ({ entities, entityType }) => {
 
         return (
           <div key={entity.uid}>
-            <div className="card mx-2" style={{ fontFamily:  "death star, san-serif", width: "225px", height: "310px", marginBottom: "10px", display: "flex", border: "3px black solid", color: "#ffe81f", backgroundColor: "#000000" }}>
+            <div className="card mx-2" style={{ fontFamily:  "death star, san-serif", width: "225px", height: "310px", marginBottom: "10px", display: "flex", border: "3px #ffe81f solid", color: "#ffe81f", backgroundColor: "#000000" }}>
               <img className="card-img-top" src={`https://starwars-visualguide.com/assets/img/${derivedEntityType}/${entity.uid}.jpg`} alt={entity.name} width="100" height="170" />
               <div className="card-body" style={{ height: "5px", paddingBottom: "0", marginBottom: "0" }}>
                 <div style={{ display: "flex", marginBottom: "0" }}>

@@ -23,7 +23,7 @@ export const Layout = () => {
     return (
         <ScrollToTop>
             <Navbar />
-            <div className="container">
+            <div className="container" style={{ backgroundColor:  "#000", margin: "0", width: "100%" }}>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/details/:entity/:id" element={<Detail />} />
